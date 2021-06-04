@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { fetchCurrentUser } from './redux/asyncActions/userActions';
+import WelcomePage from './components/WelcomePage/WelcomePage';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -12,7 +14,14 @@ const App = () => {
 
   return (
     <div className='App'>
-      Hello world
+      <Switch>
+        <Route path='/welcome' exact>
+          <WelcomePage />
+        </Route>
+        <Route>
+          <Redirect to='/welcome' />
+        </Route>
+      </Switch>
     </div>
   );
 };
