@@ -1,0 +1,58 @@
+.welcome {
+  margin-top: 55px;
+  position: relative;
+
+  .appTitle {
+    font-size: 96px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  .prettyText {
+    width: 47%;
+  }
+
+  .figures {
+    .ellipse {
+      position: absolute;
+      width: 840px;
+      height: 145px;
+      background: var(--green-color);
+      border-radius: 50%;
+      left: 80px;
+      top: 70px;
+      z-index: -1;
+    }
+
+    .squares {
+      position: absolute;
+      top: 200px;
+      left: 38%;
+      z-index: -1;
+
+      .square {
+        width: 117px;
+        height: 117px;
+        background: var(--orange-color);
+        position: absolute;
+
+        &:nth-child(2) {
+          top: calc(117px + 15px);
+          left: calc(117px + 33px);
+        }
+
+        &:nth-child(3) {
+          top: calc(2 * (117px + 15px));
+          left: calc(2 * (117px + 33px));
+        }
+      }
+    }
+
+    .star {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: -1;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+.header {
+  padding: 40px 0;
+  display: flex;
+  justify-content: space-between;
+
+  .loginBtn {
+    text-decoration: none;
+    color: #181818;
+
+    &:hover {
+      font-weight: bold;
+      margin-right: -3px;
+    }
+  }
+
+  .navigationList {
+    display: flex;
+
+    .navigationItem {
+      margin-right: 50px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      a {
+        text-decoration: none;
+        color: #181818;
+      }
+    }
+
+    .userDropdown {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+    }
+  }
+}
