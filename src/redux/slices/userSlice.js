@@ -15,12 +15,12 @@ export const userSlice = createSlice({
     setUser: (state, user) => {
       state.user = user;
     },
-    logout: (state) => {
+    resetUser: (state) => {
       state.user = null;
     },
   },
 });
 
-export const { logout, setUser, setUserIsLoading } = userSlice.actions;
+export const { resetUser, setUser, setUserIsLoading } = userSlice.actions;
 
 export const userReducer = userSlice.reducer;

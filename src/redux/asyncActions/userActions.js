@@ -1,5 +1,5 @@
 import { UsersService } from '../../api/services/users.service';
-import { setUser, setUserIsLoading } from '../slices/userSlice';
+import { resetUser, setUser, setUserIsLoading } from '../slices/userSlice';
 
 export const fetchCurrentUser = () => async (dispatch) => {
   dispatch(setUserIsLoading(true));
@@ -12,4 +12,9 @@ export const fetchCurrentUser = () => async (dispatch) => {
   } finally {
     dispatch(setUserIsLoading(false));
   }
+};
+
+export const logout = () => async (dispatch) => {
+  dispatch(resetUser());
+  await UsersService.logout();
 };
