@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { fetchCurrentUser } from './redux/asyncActions/userActions';
+import { fetchCurrentUser } from './redux/actions/userActions';
 import Container from './components/layout/Container/Container';
 import Header from './components/layout/Header/Header';
 import RouterSwitch from './components/RouterSwitch/RouterSwitch';

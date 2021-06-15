@@ -26,10 +26,10 @@ const Header = () => {
           : (
             <ul className={classes.navigationList}>
               <li className={classes.navigationItem}>
-                <NavLink to='/create-topic'>New topic</NavLink>
+                <NavLink to='/topics'>All topics</NavLink>
               </li>
               <li className={classes.navigationItem}>
-                <NavLink to='/feed'>Feed</NavLink>
+                <NavLink to='/create-topic'>New topic</NavLink>
               </li>
               <li className={classes.navigationItem}>
                 <NavLink to='/collection'>My collection</NavLink>
