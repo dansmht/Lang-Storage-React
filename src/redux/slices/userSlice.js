@@ -9,10 +9,10 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUserIsLoading: (state, isLoading) => {
+    setUserIsLoading: (state, { payload: isLoading }) => {
       state.isLoading = isLoading;
     },
-    setUser: (state, user) => {
+    setUser: (state, { payload: user }) => {
       state.user = user;
     },
     resetUser: (state) => {
