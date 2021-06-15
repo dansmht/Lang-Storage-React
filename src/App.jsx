@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { fetchCurrentUser } from './redux/asyncActions/userActions';
-import WelcomePage from './components/WelcomePage/WelcomePage';
+import Container from './components/layout/Container/Container';
+import Header from './components/layout/Header/Header';
+import RouterSwitch from './components/RouterSwitch/RouterSwitch';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -14,14 +15,10 @@ const App = () => {
 
   return (
     <div className='App'>
-      <Switch>
-        <Route path='/welcome' exact>
-          <WelcomePage />
-        </Route>
-        <Route>
-          <Redirect to='/welcome' />
-        </Route>
-      </Switch>
+      <Container>
+        <Header />
+        <RouterSwitch />
+      </Container>
     </div>
   );
 };

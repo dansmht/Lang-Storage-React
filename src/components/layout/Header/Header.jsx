@@ -1,17 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import Logo from '../Logo/Logo';
+import Logo from '../../shared/Logo/Logo';
 
 import classes from './Header.module.scss';
 
-const Header = ({ isWelcomePage }) => {
+const Header = () => {
+  const { user, isLoading } = useSelector(state => state.user);
+
   return (
     <header className={classes.header}>
       <Logo />
-      {
-        isWelcomePage
+      { isLoading
+        ? (
+          <div>Loading...</div>
+        )
+        : !user
           ? (
             <a
               href={`${import.meta.env.VITE_BASE_SERVER_URL}/api/auth/login`}
@@ -39,14 +44,6 @@ const Header = ({ isWelcomePage }) => {
       }
     </header>
   );
-};
-
-Header.propTypes = {
-  isWelcomePage: PropTypes.bool,
-};
-
-Header.defaultProps = {
-  isWelcomePage: false,
 };
 
 export default Header;
