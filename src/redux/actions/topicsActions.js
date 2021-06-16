@@ -4,7 +4,7 @@ import { setTopics, setTopicsIsLoading } from '../slices/topicsSlice';
 export const fetchOtherTopics = () => async (dispatch) => {
   dispatch(setTopicsIsLoading(true));
   try {
-    const topics = await TopicsService.getCurrentUser();
+    const topics = await TopicsService.getOtherTopics();
     console.log('Topics', topics);
     dispatch(setTopics(topics));
   } catch (err) {

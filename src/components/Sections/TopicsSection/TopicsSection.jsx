@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchOtherTopics } from '../../../redux/actions/topicsActions';
 import SortButton from '../../shared/SortButton/SortButton';
+import TopicsLoader from './TopicsLoader/TopicsLoader';
 
 import classes from './TopicsSection.module.scss';
 
@@ -22,9 +23,19 @@ const TopicsSection = () => {
         <p className={classes.title}>Other people&apos;s topics</p>
         <SortButton />
       </header>
-      <ul className={classes.TopicList}>
-        Topics
-      </ul>
+      {
+        isLoading
+          ? (
+            <TopicsLoader />
+          )
+          : topics?.length
+            ? (
+              <ul className={classes.TopicList}>
+                Topics
+              </ul>
+            )
+            : <div>There are no topics yet. Be the first add your own topic!</div>
+      }
     </section>
   );
 };
