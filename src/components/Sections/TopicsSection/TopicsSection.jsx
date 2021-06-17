@@ -24,15 +24,15 @@ const TopicsSection = () => {
         <SortButton />
       </header>
       {
-        isLoading
+        topics?.length
           ? (
-            <TopicsLoader />
+            <ul className={classes.TopicList}>
+              Topics
+            </ul>
           )
-          : topics?.length
+          : isLoading
             ? (
-              <ul className={classes.TopicList}>
-                Topics
-              </ul>
+              <TopicsLoader />
             )
             : <div>There are no topics yet. Be the first add your own topic!</div>
       }
