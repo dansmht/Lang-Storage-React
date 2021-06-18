@@ -3,6 +3,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 
 import WelcomeSection from '../Sections/WelcomeSection/WelcomeSection';
 import TopicsSection from '../Sections/TopicsSection/TopicsSection';
+import CreateTopicSection from '../Sections/CreateTopicSection/CreateTopicSection';
 
 const RouterSwitch = () => {
   return (
@@ -12,6 +13,9 @@ const RouterSwitch = () => {
       </Route>
       <Route path='/topics' exact>
         <TopicsSection />
+      </Route>
+      <Route path='/create-topic' exact>
+        <CreateTopicSection />
       </Route>
       <Route>
         <Redirect to='/welcome' />

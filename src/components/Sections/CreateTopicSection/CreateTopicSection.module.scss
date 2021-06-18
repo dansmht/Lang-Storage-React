@@ -1,0 +1,123 @@
+.CreateTopicSection {
+  padding: 30px 30px 30px 40px;
+  border: 2px solid var(--light-gray-color);
+  border-radius: 20px;
+
+  .TitleWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .Title {
+      font-weight: 400;
+      font-size: var(--large-font-size);
+    }
+
+    .CloseButton {
+      width: 37px;
+      height: 37px;
+      background: transparent;
+      border: 2px solid var(--blue-color);
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  }
+
+  h4 {
+    font-weight: 400;
+    color: var(--darkest-gray-color);
+    font-size: var(--medium-font-size);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    .FormWrapper {
+      margin-right: 120px;
+
+      .PrivacyWrapper {
+        label {
+          margin-right: 60px;
+
+          &:last-child {
+            margin-right: 0;
+          }
+        }
+
+        h4 {
+          margin-bottom: 15px;
+        }
+      }
+
+      .ExamplesBlockWrapper {
+        h4 {
+          margin-top: 20px;
+          margin-bottom: 10px;
+
+          span {
+            vertical-align: text-top;
+            font-size: var(--small-font-size);
+          }
+        }
+
+        .LanguageTitles {
+          display: flex;
+          margin-bottom: -6px;
+
+          span {
+            flex-grow: 1;
+            font-size: var(--small-font-size);
+
+            &:first-child {
+              color: var(--blue-color);
+              margin-left: 2px;
+            }
+
+            &:last-child {
+              color: var(--orange-color);
+              margin-left: 52px;
+            }
+          }
+        }
+
+        .ExamplesWrapper {
+          display: flex;
+          align-items: center;
+
+          div {
+            max-width: 480px;
+            width: 100%;
+          }
+
+          .Divider {
+            max-width: 50px;
+            height: 2px;
+            background: var(--light-gray-color);
+
+            &.red {
+              background: var(--invalid-red-color);
+            }
+
+            &.green {
+              background: var(--valid-green-color);
+            }
+          }
+        }
+      }
+    }
+
+    .SubmitButton {
+      align-self: flex-end;
+      background: transparent;
+      color: var(--black-color);
+      width: 193px;
+      height: 37px;
+      border: 2px solid var(--blue-color);
+      border-radius: 10px;
+      font-size: var(--small-font-size);
+      outline: none;
+      cursor: pointer;
+    }
+  }
+}
