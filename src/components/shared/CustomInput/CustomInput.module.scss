@@ -1,0 +1,39 @@
+.CustomInput {
+  margin: 14px 0;
+
+  label {
+    display: flex;
+    align-items: center;
+  }
+
+  span {
+    color: var(--darkest-gray-color);
+    font-size: var(--medium-font-size);
+    margin-right: 10px;
+  }
+
+  input {
+    flex-grow: 1;
+    font-size: 15px;
+    padding: 9px 13px;
+    border: 1px solid var(--light-gray-color);
+    border-radius: 8px;
+    outline: none;
+
+    &.invalid {
+      border-color: var(--invalid-red-color);
+    }
+
+    &.valid {
+      border-color: var(--valid-green-color);
+    }
+
+    &:focus {
+      border-color: var(--black-color);
+    }
+  }
+}
+
+.flex {
+  display: flex;
+}

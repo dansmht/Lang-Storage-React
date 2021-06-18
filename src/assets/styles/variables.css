@@ -3,10 +3,13 @@
   --black-color: #181818;
   --dark-gray-color: #7d7d7d;
   --light-gray-color: #bbbbbb;
+  --darkest-gray-color: #4c4e52;
   --white-color: #ffffff;
   --orange-color: #ff591c;
   --green-color: #8bfa57;
   --blue-color: #2542fa;
+  --invalid-red-color: #d11414;
+  --valid-green-color: #51d114;
 
   /* font-sizes */
   --small-font-size: 12px;
