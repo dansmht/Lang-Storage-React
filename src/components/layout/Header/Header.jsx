@@ -36,7 +36,7 @@ const Header = () => {
               </li>
               <li className={classes.navigationItem}>
                 <div className={classes.userDropdown}>
-                  User
+                  <img src={user.picture} alt='User' />
                 </div>
               </li>
             </ul>
