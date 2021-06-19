@@ -12,4 +12,8 @@ export class TopicsService {
   static getTopicById(id) {
     return api.get(`topics/${id}`);
   }
+
+  static createTopic(data) {
+    return api.post('topics', data);
+  }
 }

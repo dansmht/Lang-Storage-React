@@ -2,6 +2,7 @@ import React, { Fragment, useMemo } from 'react';
 import classNames from 'classnames';
 import { useFieldArray, useForm } from 'react-hook-form';
 
+import { TopicsService } from '../../../api/services/topics.service';
 import closeSrc from '../../../assets/images/x-close.svg';
 import CustomInput from '../../shared/CustomInput/CustomInput';
 import CustomRadioButton from '../../shared/CustomRadioButton/CustomRadioButton';
@@ -57,8 +58,24 @@ const CreateTopicSection = () => {
     }
   };
 
-  const onSubmit = data => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const formattedTopicData = {
+      name: data['Topic name'],
+      isPrivate: data.Privacy === 'private',
+      position: Math.random().toString(),
+      topicItems: data.item.map((item, position) => ({
+        position,
+        nativeLocale: 'ru',
+        nativeText: item.nativeText,
+        targetLocale: 'en',
+        targetText: item.targetText,
+        examples: item.examples?.map((example) => ({ text: example.value })),
+      })),
+    };
+
+    await TopicsService.createTopic(formattedTopicData);
+
+    reset(defaultValues);
   };
 
   return (
@@ -84,13 +101,13 @@ const CreateTopicSection = () => {
               register={register}
               name='Privacy'
               title='Private'
-              value='true'
+              value='private'
             />
             <CustomRadioButton
               register={register}
               name='Privacy'
               title='Visible to all'
-              value='false'
+              value='public'
               defaultChecked
             />
           </div>
