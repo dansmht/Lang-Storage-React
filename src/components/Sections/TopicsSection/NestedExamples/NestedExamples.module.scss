@@ -1,0 +1,28 @@
+.NestedExamples {
+  display: flex;
+  flex-direction: column;
+
+  textarea {
+    width: 100%;
+    min-height: 45px;
+    height: 45px;
+    max-height: 100px;
+    line-height: 25px;
+    font-size: 15px;
+    padding: 9px 13px;
+    border: 1px solid var(--light-gray-color);
+    border-radius: 8px;
+    outline: none;
+    resize: vertical;
+
+    &:focus {
+      border-color: var(--black-color);
+    }
+  }
+
+  button {
+    align-self: flex-end;
+    margin-top: 10px;
+    margin-bottom: 16px;
+  }
+}

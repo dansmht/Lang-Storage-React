@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Noto Sans', Roboto, Ubuntu, 'Open Sans', 'Fira Sans', 'Lucida Sans', Arial, sans-serif;
 }
 
 html,
@@ -19,6 +20,5 @@ ul {
 }
 
 body {
-  font-family: 'Noto Sans', Roboto, Ubuntu, 'Open Sans', 'Fira Sans', 'Lucida Sans', Arial, sans-serif;
   font-size: var(--medium-font-size);
 }

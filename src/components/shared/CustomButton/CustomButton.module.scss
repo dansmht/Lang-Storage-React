@@ -1,0 +1,36 @@
+.CustomButton {
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+
+  &.blue,
+  &.orange {
+    color: var(--black-color);
+    border: 2px solid;
+    border-radius: 10px;
+    font-size: var(--small-font-size);
+  }
+
+  &.blue {
+    border-color: var(--blue-color);
+  }
+
+  &.orange {
+    border-color: var(--orange-color);
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background: var(--orange-color);
+      color: var(--white-color);
+    }
+  }
+
+  &.gray {
+    font-size: 14px;
+    line-height: 19px;
+    color: var(--dark-gray-color);
+    padding: 2px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--dark-gray-color);
+  }
+}
