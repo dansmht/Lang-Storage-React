@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import history from '../../../utils/history';
+import { setCurrentPage } from '../../../redux/slices/topicsSlice';
 import { fetchOtherTopics } from '../../../redux/actions/topicsActions';
 import SortButton from '../../shared/SortButton/SortButton';
 import TopicsLoader from './TopicsLoader/TopicsLoader';
@@ -8,14 +10,30 @@ import TopicsLoader from './TopicsLoader/TopicsLoader';
 import classes from './TopicsSection.module.scss';
 
 const TopicsSection = () => {
-  const { topics, isLoading } = useSelector(state => state.topics);
-  console.log('topics', topics, 'isLoading', isLoading);
-
   const dispatch = useDispatch();
 
+  const { topics, isLoading, currentPage, totalTopics } = useSelector(state => state.topics);
+  console.log('topics', topics, 'isLoading', isLoading);
+
   useEffect(() => {
-    dispatch(fetchOtherTopics());
+    if (currentPage) return;
+
+    const queryParams = new URLSearchParams(history.location.search);
+    const page = +queryParams.get('page');
+
+    if (page) {
+      dispatch(setCurrentPage(page));
+    } else {
+      history.replace('/topics');
+      dispatch(setCurrentPage(1));
+    }
   }, []);
+
+  useEffect(() => {
+    if (currentPage) {
+      dispatch(fetchOtherTopics());
+    }
+  }, [currentPage]);
 
   return (
     <section className={classes.TopicsSection}>

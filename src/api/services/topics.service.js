@@ -5,8 +5,8 @@ export class TopicsService {
     return api.get('topics/my');
   }
 
-  static getOtherTopics() {
-    return api.get('topics/other');
+  static getOtherTopics({ page, take }) {
+    return api.get(`topics/other?page=${page}&take=${take}`);
   }
 
   static getTopicById(id) {
