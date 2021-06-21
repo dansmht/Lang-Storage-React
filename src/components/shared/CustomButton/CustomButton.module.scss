@@ -32,5 +32,11 @@
     padding: 2px 10px;
     border-radius: 6px;
     border: 1px solid var(--dark-gray-color);
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      border-color: var(--valid-green-color);
+      color: var(--valid-green-color);
+    }
   }
 }
