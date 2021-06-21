@@ -1,6 +1,7 @@
-import React, { Fragment, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import { useFieldArray, useForm } from 'react-hook-form';
+import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 import { TopicsService } from '../../../api/services/topics.service';
 import closeSrc from '../../../assets/images/x-close.svg';
@@ -16,7 +17,7 @@ const CreateTopicSection = () => {
   const defaultValue = useMemo(() => ({ nativeText: '', targetText: '', examples: [] }), []);
   const defaultValues = useMemo(() => ({ item: [defaultValue] }), []);
 
-  const { control, register, formState: { errors, dirtyFields }, handleSubmit, reset } = useForm({
+  const { control, register, formState: { errors, dirtyFields }, handleSubmit, reset, getValues, setValue } = useForm({
     mode: 'all',
     reValidateMode: 'onChange',
     defaultValues,
@@ -78,6 +79,35 @@ const CreateTopicSection = () => {
     reset(defaultValues);
   };
 
+  const reorder = (list, startIndex, endIndex) => {
+    const result = Array.from(list);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+
+    return result;
+  };
+
+  const onDragEnd = (result) => {
+    const { destination, draggableId, source } = result;
+
+    if (!destination || (
+      destination.droppableId === source.droppableId
+      && destination.index === source.index
+    )) {
+      return;
+    }
+
+    const items = reorder(
+      getValues('item'),
+      source.index,
+      destination.index,
+    );
+
+    // TODO fix it
+    setValue('item', items);
+    console.log('onDragEnd', items);
+  };
+
   return (
     <section className={classes.CreateTopicSection}>
       <div className={classes.TitleWrapper}>
@@ -118,37 +148,58 @@ const CreateTopicSection = () => {
               <span>Russian</span>
             </div>
 
-            {
-              fields.map((item, index) => (
-                <Fragment key={item.id}>
-                  <div className={classes.ExamplesWrapper}>
-                    <CustomInput
-                      register={register}
-                      registerName={`item.${index}.targetText`}
-                      validateOptions={validateOptions}
-                      {...createPropsForInput(`item.${index}.targetText`, true)}
-                      maxLength={50}
-                    />
-                    <div
-                      className={classNames(classes.Divider, {
-                        [`${classes.red}`]: errors.item?.[index]?.targetText || errors.item?.[index]?.nativeText,
-                        [`${classes.green}`]:
-                      (!errors.item?.[index]?.targetText && dirtyFields.item?.[index]?.targetText)
-                      && (!errors.item?.[index]?.nativeText && dirtyFields.item?.[index]?.nativeText),
-                      })}
-                    />
-                    <CustomInput
-                      register={register}
-                      registerName={`item.${index}.nativeText`}
-                      validateOptions={validateOptions}
-                      {...createPropsForInput(`item.${index}.nativeText`, true)}
-                      maxLength={50}
-                    />
-                  </div>
-                  <NestedExamples nestIndex={index} control={control} register={register} />
-                </Fragment>
-              ))
-            }
+            <DragDropContext onDragEnd={onDragEnd}>
+              <Droppable droppableId='droppable-1'>
+                {
+                  (provided, snapshot) => (
+                    <ul
+                      ref={provided.innerRef}
+                      {...provided.droppableProps}
+                    >
+                      {
+                        fields.map((item, index) => (
+                          <Draggable key={item.id} draggableId={item.id} index={index}>
+                            {(provided, snapshot) => (
+                              <li
+                                ref={provided.innerRef}
+                                {...provided.draggableProps}
+                              >
+                                <div className={classes.ExamplesWrapper}>
+                                  <CustomInput
+                                    register={register}
+                                    registerName={`item.${index}.targetText`}
+                                    validateOptions={validateOptions}
+                                    {...createPropsForInput(`item.${index}.targetText`, true)}
+                                    maxLength={50}
+                                  />
+                                  <div
+                                    className={classNames(classes.Divider, {
+                                      [`${classes.red}`]: errors.item?.[index]?.targetText || errors.item?.[index]?.nativeText,
+                                      [`${classes.green}`]:
+                                    (!errors.item?.[index]?.targetText && dirtyFields.item?.[index]?.targetText)
+                                    && (!errors.item?.[index]?.nativeText && dirtyFields.item?.[index]?.nativeText),
+                                    })}
+                                    {...provided.dragHandleProps}
+                                  />
+                                  <CustomInput
+                                    register={register}
+                                    registerName={`item.${index}.nativeText`}
+                                    validateOptions={validateOptions}
+                                    {...createPropsForInput(`item.${index}.nativeText`, true)}
+                                    maxLength={50}
+                                  />
+                                </div>
+                                <NestedExamples nestIndex={index} control={control} register={register} />
+                              </li>
+                            )}
+                          </Draggable>
+                        ))
+                      }
+                    </ul>
+                  )
+                }
+              </Droppable>
+            </DragDropContext>
 
           </div>
           <CustomButton
