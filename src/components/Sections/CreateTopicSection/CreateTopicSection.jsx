@@ -11,6 +11,7 @@ import CustomButton from '../../shared/CustomButton/CustomButton';
 import NestedExamples from '../TopicsSection/NestedExamples/NestedExamples';
 
 import classes from './CreateTopicSection.module.scss';
+import Dragger from '../../shared/Dragger/Dragger';
 
 const CreateTopicSection = () => {
 
@@ -156,6 +157,7 @@ const CreateTopicSection = () => {
                                     validateOptions={validateOptions}
                                     {...createPropsForInput(`item.${index}.targetText`, true)}
                                     maxLength={50}
+                                    className={classes.Input}
                                   />
                                   <div
                                     className={classNames(classes.Divider, {
@@ -164,7 +166,6 @@ const CreateTopicSection = () => {
                                     (!errors.item?.[index]?.targetText && dirtyFields.item?.[index]?.targetText)
                                     && (!errors.item?.[index]?.nativeText && dirtyFields.item?.[index]?.nativeText),
                                     })}
-                                    {...provided.dragHandleProps}
                                   />
                                   <CustomInput
                                     defaultValue={item.nativeText}
@@ -173,7 +174,9 @@ const CreateTopicSection = () => {
                                     validateOptions={validateOptions}
                                     {...createPropsForInput(`item.${index}.nativeText`, true)}
                                     maxLength={50}
+                                    className={classes.Input}
                                   />
+                                  <Dragger {...provided.dragHandleProps} />
                                 </div>
                                 <NestedExamples nestIndex={index} control={control} register={register} />
                               </li>

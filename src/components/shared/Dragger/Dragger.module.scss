@@ -1,0 +1,30 @@
+.Dragger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 19px;
+  margin: 0 auto;
+
+  span {
+    position: relative;
+    display: inline-block;
+    width: 33px;
+    height: 3px;
+    background: var(--light-gray-color);
+    cursor: grab;
+
+    &:first-child:before,
+    &:last-child:after {
+      content: '';
+      position: absolute;
+    }
+
+    &:first-child:before {
+
+    }
+
+    &:last-child:after {
+
+    }
+  }
+}

@@ -4,8 +4,8 @@ import classNames from 'classnames';
 
 import classes from './CustomInput.module.scss';
 
-const CustomInput = ({ type, name, registerName, label, errors, isDirty, register, validateOptions, ...props }) => (
-  <div className={classNames(classes.CustomInput, { [`${classes.flex}`]: !label })}>
+const CustomInput = ({ type, name, registerName, label, errors, isDirty, register, validateOptions, className, ...props }) => (
+  <div className={classNames(classes.CustomInput, className, { [`${classes.flex}`]: !label })}>
     {
       label
         ? (
@@ -41,6 +41,7 @@ CustomInput.propTypes = {
   isDirty: PropTypes.bool,
   register: PropTypes.func.isRequired,
   validateOptions: PropTypes.object,
+  className: PropTypes.string,
 };
 
 CustomInput.defaultProps = {
