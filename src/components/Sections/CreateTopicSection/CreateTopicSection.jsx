@@ -17,13 +17,13 @@ const CreateTopicSection = () => {
   const defaultValue = useMemo(() => ({ nativeText: '', targetText: '', examples: [] }), []);
   const defaultValues = useMemo(() => ({ item: [defaultValue] }), []);
 
-  const { control, register, formState: { errors, dirtyFields }, handleSubmit, reset, getValues, setValue } = useForm({
+  const { control, register, formState: { errors, dirtyFields }, handleSubmit, reset } = useForm({
     mode: 'all',
     reValidateMode: 'onChange',
     defaultValues,
   });
 
-  const { fields, append, remove } = useFieldArray({
+  const { fields, append, remove, move } = useFieldArray({
     control,
     name: 'item',
   });
@@ -79,16 +79,8 @@ const CreateTopicSection = () => {
     reset(defaultValues);
   };
 
-  const reorder = (list, startIndex, endIndex) => {
-    const result = Array.from(list);
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
-
-    return result;
-  };
-
   const onDragEnd = (result) => {
-    const { destination, draggableId, source } = result;
+    const { destination, source } = result;
 
     if (!destination || (
       destination.droppableId === source.droppableId
@@ -97,15 +89,7 @@ const CreateTopicSection = () => {
       return;
     }
 
-    const items = reorder(
-      getValues('item'),
-      source.index,
-      destination.index,
-    );
-
-    // TODO fix it
-    setValue('item', items);
-    console.log('onDragEnd', items);
+    move(source.index, destination.index);
   };
 
   return (
@@ -166,6 +150,7 @@ const CreateTopicSection = () => {
                               >
                                 <div className={classes.ExamplesWrapper}>
                                   <CustomInput
+                                    defaultValue={item.targetText}
                                     register={register}
                                     registerName={`item.${index}.targetText`}
                                     validateOptions={validateOptions}
@@ -182,6 +167,7 @@ const CreateTopicSection = () => {
                                     {...provided.dragHandleProps}
                                   />
                                   <CustomInput
+                                    defaultValue={item.nativeText}
                                     register={register}
                                     registerName={`item.${index}.nativeText`}
                                     validateOptions={validateOptions}
