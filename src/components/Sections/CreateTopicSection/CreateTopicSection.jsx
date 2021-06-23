@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import classNames from 'classnames';
 import { useFieldArray, useForm } from 'react-hook-form';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
@@ -80,7 +80,7 @@ const CreateTopicSection = () => {
     reset(defaultValues);
   };
 
-  const onDragEnd = (result) => {
+  const onDragEnd = useCallback((result) => {
     const { destination, source } = result;
 
     if (!destination || (
@@ -91,7 +91,7 @@ const CreateTopicSection = () => {
     }
 
     move(source.index, destination.index);
-  };
+  }, []);
 
   return (
     <section className={classes.CreateTopicSection}>
@@ -134,12 +134,13 @@ const CreateTopicSection = () => {
             </div>
 
             <DragDropContext onDragEnd={onDragEnd}>
-              <Droppable droppableId='droppable-1'>
+              <Droppable droppableId='topic-list'>
                 {
                   (provided, snapshot) => (
                     <ul
                       ref={provided.innerRef}
                       {...provided.droppableProps}
+                      className={classes.ExampleList}
                     >
                       {
                         fields.map((item, index) => (
@@ -148,6 +149,7 @@ const CreateTopicSection = () => {
                               <li
                                 ref={provided.innerRef}
                                 {...provided.draggableProps}
+                                className={classNames({ [`${classes.Dragging}`]: snapshot.isDragging })}
                               >
                                 <div className={classes.ExamplesWrapper}>
                                   <CustomInput
@@ -184,6 +186,7 @@ const CreateTopicSection = () => {
                           </Draggable>
                         ))
                       }
+                      { provided.placeholder }
                     </ul>
                   )
                 }
