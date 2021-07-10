@@ -1,43 +1,60 @@
 .TopicCard {
-  display: flex;
-  flex-direction: column;
   padding: 20px 30px;
   width: 280px;
   height: 411px;
   border: 2px solid var(--dark-gray-color);
   border-radius: 20px;
+  overflow: hidden;
   transition: all 0.3s ease-in-out;
 
   &:hover {
     border-color: var(--orange-color);
+    height: 100%;
+
+    .AddButton {
+      opacity: 1;
+    }
   }
 
-  .TopicTitle {
-    font-weight: 400;
-    height: 25px;
-    font-size: var(--medium-font-size);
-    margin-bottom: 10px;
-  }
-
-  .ExampleText {
-    flex-grow: 1;
-    font-size: var(--large-font-size);
-  }
-
-  .Divider {
-    margin: 15px 0;
-  }
-
-  .InfoWrapper {
+  .ContentWrapper {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    height: calc(411px - 40px - 4px);
+
+    .TopicTitle {
+      font-weight: 400;
+      height: 25px;
+      font-size: var(--medium-font-size);
+      margin-bottom: 10px;
+    }
+
+    .ExampleText {
+      flex-grow: 1;
+      font-size: var(--large-font-size);
+    }
+
+    .Divider {
+      margin: 15px 0;
+    }
+
+    .InfoWrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .Dull,
+    .Divider {
+      color: var(--light-gray-color);
+      font-size: var(--small-font-size);
+      cursor: default;
+    }
   }
 
-  .Dull,
-  .Divider {
-    color: var(--light-gray-color);
-    font-size: var(--small-font-size);
-    cursor: default;
+  .AddButton {
+    width: 100%;
+    margin-top: 20px;
+    height: 37px;
+    opacity: 0;
   }
 }

@@ -1,34 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import { formatDate } from '../../../../utils/formatDate';
+import CustomButton from '../../../shared/CustomButton/CustomButton';
 
 import classes from './TopicCard.module.scss';
-import classNames from 'classnames';
 
 const TopicCard = ({ topicData }) => {
   return (
     <li className={classes.TopicCard}>
-      <h4 className={classes.TopicTitle}>
-        { topicData.name }
-      </h4>
-      <p className={classes.ExampleText}>
-        { topicData.items[0].targetText }
-      </p>
-      <div className={classNames(classes.Dull, classes.Divider)}>
-        translates as
-      </div>
-      <p className={classes.ExampleText}>
-        { topicData.items[0].nativeText }
-      </p>
-      <div className={classes.InfoWrapper}>
-        <div className={classes.Dull}>
-          { topicData.user.name }
+      <div className={classes.ContentWrapper}>
+        <h4 className={classes.TopicTitle}>
+          { topicData.name }
+        </h4>
+        <p className={classes.ExampleText}>
+          { topicData.items[0].targetText }
+        </p>
+        <div className={classNames(classes.Dull, classes.Divider)}>
+          translates as
         </div>
-        <div className={classes.Dull}>
-          { formatDate(topicData.updatedDate) }
+        <p className={classes.ExampleText}>
+          { topicData.items[0].nativeText }
+        </p>
+        <div className={classes.InfoWrapper}>
+          <div className={classes.Dull}>
+            { topicData.user.name }
+          </div>
+          <div className={classes.Dull}>
+            { formatDate(topicData.updatedDate) }
+          </div>
         </div>
       </div>
+      <CustomButton
+        className={classes.AddButton}
+        label='Add to my collection'
+        orange
+      />
     </li>
   );
 };
