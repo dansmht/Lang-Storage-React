@@ -1,6 +1,43 @@
 .TopicCard {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px;
   width: 280px;
   height: 411px;
   border: 2px solid var(--dark-gray-color);
   border-radius: 20px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    border-color: var(--orange-color);
+  }
+
+  .TopicTitle {
+    font-weight: 400;
+    height: 25px;
+    font-size: var(--medium-font-size);
+    margin-bottom: 10px;
+  }
+
+  .ExampleText {
+    flex-grow: 1;
+    font-size: var(--large-font-size);
+  }
+
+  .Divider {
+    margin: 15px 0;
+  }
+
+  .InfoWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .Dull,
+  .Divider {
+    color: var(--light-gray-color);
+    font-size: var(--small-font-size);
+    cursor: default;
+  }
 }

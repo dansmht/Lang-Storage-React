@@ -6,12 +6,16 @@
     align-items: center;
     margin-bottom: 40px;
 
-    .title {
+    .Title {
       margin-right: 40px;
     }
+  }
 
-    .TopicList {
-      display: flex;
-    }
+  .TopicList {
+    display: grid;
+    place-content: center;
+    grid-template-columns: repeat(auto-fill, 279px);
+    column-gap: 27px;
+    row-gap: 30px;
   }
 }

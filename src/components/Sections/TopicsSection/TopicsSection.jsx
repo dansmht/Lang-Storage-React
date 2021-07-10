@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import history from '../../../utils/history';
 import { setCurrentPage } from '../../../redux/slices/topicsSlice';
 import { fetchOtherTopics } from '../../../redux/actions/topicsActions';
+import TopicCard from './TopicCard/TopicCard';
 import SortButton from '../../shared/SortButton/SortButton';
 import TopicsLoader from './TopicsLoader/TopicsLoader';
 
@@ -38,14 +39,16 @@ const TopicsSection = () => {
   return (
     <section className={classes.TopicsSection}>
       <header className={classes.TopicHeader}>
-        <p className={classes.title}>Other people&apos;s topics</p>
+        <p className={classes.Title}>Other people&apos;s topics</p>
         <SortButton />
       </header>
       {
         topics?.length
           ? (
             <ul className={classes.TopicList}>
-              Topics
+              {topics.map((topic) => (
+                <TopicCard key={topic.id} topicData={topic} />
+              ))}
             </ul>
           )
           : isLoading

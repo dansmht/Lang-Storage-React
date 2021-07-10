@@ -1,12 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { formatDate } from '../../../../utils/formatDate';
+
 import classes from './TopicCard.module.scss';
+import classNames from 'classnames';
 
 const TopicCard = ({ topicData }) => {
   return (
     <li className={classes.TopicCard}>
-      {JSON.stringify(topicData)}
+      <h4 className={classes.TopicTitle}>
+        { topicData.name }
+      </h4>
+      <p className={classes.ExampleText}>
+        { topicData.items[0].targetText }
+      </p>
+      <div className={classNames(classes.Dull, classes.Divider)}>
+        translates as
+      </div>
+      <p className={classes.ExampleText}>
+        { topicData.items[0].nativeText }
+      </p>
+      <div className={classes.InfoWrapper}>
+        <div className={classes.Dull}>
+          { topicData.user.name }
+        </div>
+        <div className={classes.Dull}>
+          { formatDate(topicData.updatedDate) }
+        </div>
+      </div>
     </li>
   );
 };
