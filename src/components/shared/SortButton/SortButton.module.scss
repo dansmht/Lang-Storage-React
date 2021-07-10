@@ -6,6 +6,13 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  transition: var(--transition);
+
+  &:hover {
+    span {
+      background: var(--orange-color);
+    }
+  }
 
   span {
     height: 2px;
