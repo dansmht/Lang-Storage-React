@@ -3,13 +3,11 @@
   place-content: center;
   grid-template-columns: repeat(auto-fill, 279px);
   column-gap: 27px;
-  row-gap: 40px;
+  row-gap: 30px;
 
   li {
     width: 280px;
-    //background: #000;
     border: 2px solid var(--light-gray-color);
     border-radius: 20px;
-    //flex-grow: 0.5;
   }
 }
