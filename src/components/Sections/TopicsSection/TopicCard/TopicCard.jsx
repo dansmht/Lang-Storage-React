@@ -10,33 +10,33 @@ import classes from './TopicCard.module.scss';
 const TopicCard = ({ topicData }) => {
   return (
     <li className={classes.TopicCard}>
-      <div className={classes.ContentWrapper}>
-        <h4 className={classes.TopicTitle}>
-          { topicData.name }
-        </h4>
-        <p className={classes.ExampleText}>
-          { topicData.items[0].targetText }
-        </p>
-        <div className={classNames(classes.Dull, classes.Divider)}>
+      <h4 className={classes.TopicTitle}>
+        { topicData.name }
+      </h4>
+      <p className={classes.ExampleText}>
+        { topicData.items[0].targetText }
+      </p>
+      <div className={classNames(classes.Dull, classes.Divider)}>
           translates as
+      </div>
+      <p className={classes.ExampleText}>
+        { topicData.items[0].nativeText }
+      </p>
+      <div className={classes.InfoWrapper}>
+        <div className={classes.Dull}>
+          { topicData.user.name }
         </div>
-        <p className={classes.ExampleText}>
-          { topicData.items[0].nativeText }
-        </p>
-        <div className={classes.InfoWrapper}>
-          <div className={classes.Dull}>
-            { topicData.user.name }
-          </div>
-          <div className={classes.Dull}>
-            { formatDate(topicData.updatedDate) }
-          </div>
+        <div className={classes.Dull}>
+          { formatDate(topicData.updatedDate) }
         </div>
       </div>
-      <CustomButton
-        className={classes.AddButton}
-        label='Add to my collection'
-        orange
-      />
+      <div className={classes.ButtonWrapper}>
+        <CustomButton
+          className={classes.AddButton}
+          label='Add to my collection'
+          orange
+        />
+      </div>
     </li>
   );
 };

@@ -1,60 +1,105 @@
 .TopicCard {
+  display: flex;
+  flex-direction: column;
+  position: relative;
   padding: 20px 30px;
   width: 280px;
   height: 411px;
   border: 2px solid var(--dark-gray-color);
   border-radius: 20px;
-  overflow: hidden;
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition);
+
+  @media screen and (max-width: 992px) {
+    & {
+      margin-bottom: 57px;
+
+      button.AddButton {
+        border-color: var(--light-gray-color);
+        opacity: 1;
+      }
+
+      div.ButtonWrapper {
+        bottom: -59px;
+        height: 77px;
+      }
+
+      &:hover {
+
+        button.AddButton {
+          border-color: var(--orange-color);
+        }
+
+        div.ButtonWrapper {
+          border-color: var(--orange-color);
+        }
+      }
+    }
+  }
 
   &:hover {
     border-color: var(--orange-color);
-    height: 100%;
 
     .AddButton {
       opacity: 1;
     }
+
+    .ButtonWrapper {
+      bottom: -59px;
+      height: 77px;
+      border-color: var(--orange-color);
+    }
   }
 
-  .ContentWrapper {
-    display: flex;
-    flex-direction: column;
-    height: calc(411px - 40px - 4px);
-
-    .TopicTitle {
-      font-weight: 400;
-      height: 25px;
-      font-size: var(--medium-font-size);
-      margin-bottom: 10px;
-    }
-
-    .ExampleText {
-      flex-grow: 1;
-      font-size: var(--large-font-size);
-    }
-
-    .Divider {
-      margin: 15px 0;
-    }
-
-    .InfoWrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .Dull,
-    .Divider {
-      color: var(--light-gray-color);
-      font-size: var(--small-font-size);
-      cursor: default;
-    }
+  .ButtonWrapper {
+    position: absolute;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    height: 20px;
+    background: white;
+    text-align: center;
+    border: 2px solid var(--dark-gray-color);
+    border-radius: 0 0 20px 20px;
+    border-top: transparent;
+    overflow: hidden;
+    z-index: 1;
+    transition: var(--transition);
   }
 
   .AddButton {
-    width: 100%;
+    width: calc(100% - 40px);
     margin-top: 20px;
     height: 37px;
     opacity: 0;
+    transition: var(--transition);
+  }
+
+  .TopicTitle {
+    font-weight: 400;
+    height: 25px;
+    font-size: var(--medium-font-size);
+    margin-bottom: 10px;
+  }
+
+  .ExampleText {
+    flex-grow: 1;
+    font-size: var(--large-font-size);
+  }
+
+  .Divider {
+    margin: 15px 0;
+  }
+
+  .InfoWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .Dull,
+  .Divider {
+    color: var(--light-gray-color);
+    font-size: var(--small-font-size);
+    cursor: default;
   }
 }
