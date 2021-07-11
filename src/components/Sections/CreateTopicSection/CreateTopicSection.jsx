@@ -178,7 +178,7 @@ const CreateTopicSection = () => {
                                     maxLength={50}
                                     className={classes.Input}
                                   />
-                                  <Dragger {...provided.dragHandleProps} />
+                                  <Dragger {...provided.dragHandleProps} isDragging={snapshot.isDragging} />
                                 </div>
                                 <NestedExamples nestIndex={index} control={control} register={register} />
                               </li>
