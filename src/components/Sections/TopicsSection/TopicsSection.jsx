@@ -6,6 +6,7 @@ import { setCurrentPage } from '../../../redux/slices/topicsSlice';
 import { fetchOtherTopics } from '../../../redux/actions/topicsActions';
 import TopicCard from './TopicCard/TopicCard';
 import SortButton from '../../shared/SortButton/SortButton';
+import FilterButton from '../../shared/FilterButton/FilterButton';
 import TopicsLoader from './TopicsLoader/TopicsLoader';
 
 import classes from './TopicsSection.module.scss';
@@ -41,6 +42,7 @@ const TopicsSection = () => {
       <header className={classes.TopicHeader}>
         <p className={classes.Title}>Other people&apos;s topics</p>
         <SortButton />
+        <FilterButton />
       </header>
       {
         topics?.length

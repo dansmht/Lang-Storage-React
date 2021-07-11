@@ -1,12 +1,12 @@
 .SortButton {
   width: 24px;
   height: 18px;
+  margin: 0 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  transition: var(--transition);
 
   &:hover {
     span {
@@ -17,6 +17,7 @@
   span {
     height: 2px;
     background: var(--dark-gray-color);
+    transition: var(--transition);
 
     &:nth-child(1) {
       width: 24px;
