@@ -1,0 +1,106 @@
+.Logo {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  .LeftDrop,
+  .RightDrop {
+    width: 26px;
+    height: 26px;
+  }
+
+  .LeftDrop {
+    background: #ff7f50;
+    border-radius: 15px 15px 15px 0;
+  }
+
+  .RightDrop {
+    background: #9afa57;
+    border-radius: 50px 50px 0 50px;
+  }
+
+  &.Loading {
+
+    .LeftDrop {
+      animation: 2s linear leftDropBounce infinite;
+    }
+
+    .RightDrop {
+      animation: 2s linear rightDropBounce infinite;
+    }
+  }
+}
+
+@keyframes leftDropBounce {
+  0% {
+    width: 26px;
+    height: 26px;
+  }
+  7.7% {
+    width: 30px;
+    height: 22px;
+    transform: translateY(0);
+  }
+  15.4% {
+    width: 26px;
+    height: 35px;
+    transform: translateY(-12px);
+  }
+  23.1% {
+    width: 30px;
+    height: 22px;
+    transform: translateY(-38px);
+  }
+  30.8% {
+    width: 26px;
+    height: 35px;
+    transform: translateY(-12px);
+  }
+  38.5% {
+    width: 30px;
+    height: 22px;
+    transform: translateY(0);
+  }
+  46.2% {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@keyframes rightDropBounce {
+  0% {
+    width: 26px;
+    height: 26px;
+  }
+  53.9% {
+    width: 26px;
+    height: 26px;
+  }
+  61.6% {
+    width: 30px;
+    height: 22px;
+    transform: translateY(0);
+  }
+  69.3% {
+    width: 26px;
+    height: 35px;
+    transform: translateY(-12px);
+  }
+  77% {
+    width: 30px;
+    height: 22px;
+    transform: translateY(-38px);
+  }
+  84.7% {
+    width: 26px;
+    height: 35px;
+    transform: translateY(-12px);
+  }
+  92.4% {
+    width: 30px;
+    height: 22px;
+    transform: translateY(0);
+  }
+}
