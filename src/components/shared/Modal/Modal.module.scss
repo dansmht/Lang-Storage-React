@@ -1,0 +1,62 @@
+.Modal {
+
+  .ModalBackDrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 999;
+  }
+
+  .ModalContent {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 420px;
+    width: 100%;
+    min-height: 210px;
+    border: 2px solid var(--black-color);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--white-color);
+    z-index: 1000;
+
+    .ActionButtons {
+      margin-top: 30px;
+      display: flex;
+
+      .CancelButton,
+      .ConfirmButton {
+        margin: 0 10px;
+        padding: 10px 57px;
+        border: 2px solid;
+        border-radius: 10px;
+        outline: none;
+        transition: var(--transition);
+      }
+
+      .CancelButton {
+        border-color: var(--dark-gray-color);
+
+        &:hover,
+        &:focus {
+          color: var(--white-color);
+          background-color: var(--dark-gray-color);
+        }
+      }
+
+      .ConfirmButton {
+        border-color: var(--orange-color);
+
+        &:hover,
+        &:focus {
+          color: var(--white-color);
+          background-color: var(--orange-color);
+        }
+      }
+    }
+  }
+}
