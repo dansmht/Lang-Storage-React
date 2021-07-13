@@ -1,14 +1,16 @@
 .SortButton {
-  width: 24px;
-  height: 18px;
+  width: 32px;
+  height: 26px;
   margin: 0 10px;
+  padding: 4px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
     span {
       background: var(--orange-color);
     }
