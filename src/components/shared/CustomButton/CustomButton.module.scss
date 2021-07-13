@@ -19,7 +19,8 @@
     border-color: var(--orange-color);
     transition: var(--transition);
 
-    &:hover {
+    &:hover,
+    &:focus {
       background: var(--orange-color);
       color: var(--white-color);
     }
@@ -34,7 +35,8 @@
     border: 1px solid var(--dark-gray-color);
     transition: var(--transition);
 
-    &:hover {
+    &:hover,
+    &:focus {
       border-color: var(--valid-green-color);
       color: var(--valid-green-color);
     }
