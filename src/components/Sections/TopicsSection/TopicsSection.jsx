@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import history from '../../../utils/history';
@@ -11,7 +11,7 @@ import TopicsLoader from './TopicsLoader/TopicsLoader';
 
 import classes from './TopicsSection.module.scss';
 
-const TopicsSection = () => {
+const TopicsSection = memo(() => {
   const dispatch = useDispatch();
 
   const { topics, isLoading, currentPage, totalTopics } = useSelector(state => state.topics);
@@ -61,6 +61,6 @@ const TopicsSection = () => {
       }
     </section>
   );
-};
+});
 
 export default TopicsSection;
