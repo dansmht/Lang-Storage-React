@@ -1,7 +1,8 @@
 .header {
-  padding: 40px 0;
+  padding: 6px 0 40px;
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 
   .loginBtn {
     text-decoration: none;
