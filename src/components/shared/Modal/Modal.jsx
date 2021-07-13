@@ -5,6 +5,8 @@ import classNames from 'classnames';
 
 import classes from './Modal.module.scss';
 
+const ESC_KEY = 27;
+
 const modalRootNode = document.getElementById('modal-root');
 
 const Modal = ({ isOpen, confirm, close, cancelBtnText, confirmBtnText, closableBackdrop, children }) => {
@@ -52,6 +54,12 @@ const Modal = ({ isOpen, confirm, close, cancelBtnText, confirmBtnText, closable
     }
   }, [isOpen]);
 
+  const handleKeyDown = (event) => {
+    if (event.keyCode === ESC_KEY) {
+      close();
+    }
+  };
+
   const stopPropagation = (event) => {
     event.stopPropagation();
   };
@@ -68,6 +76,7 @@ const Modal = ({ isOpen, confirm, close, cancelBtnText, confirmBtnText, closable
       className={classNames(classes.Modal, 'modal')}
       ref={modalRef}
       onClick={stopPropagation}
+      onKeyDown={handleKeyDown}
     >
       <div ref={topTabTrap} tabIndex={0} />
       <div
