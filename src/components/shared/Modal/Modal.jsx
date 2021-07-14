@@ -19,6 +19,8 @@ const Modal = ({ isOpen, confirm, close, cancelBtnText, confirmBtnText, closable
   useEffect(() => {
     if (isOpen) {
 
+      const focusedElementBeforeModal = document.activeElement;
+
       const focusableElementsString = 'input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), a[href], area[href], iframe, object, embed, [tabindex="0"], [contenteditable]';
 
       const focusableElements = Array.from(modalRef.current.querySelectorAll(focusableElementsString));
@@ -39,6 +41,8 @@ const Modal = ({ isOpen, confirm, close, cancelBtnText, confirmBtnText, closable
         document.removeEventListener('focusin', trapFocus);
 
         document.body.classList.remove('overflow');
+
+        focusedElementBeforeModal.focus();
       };
 
       // eslint-disable-next-line no-inner-declarations
