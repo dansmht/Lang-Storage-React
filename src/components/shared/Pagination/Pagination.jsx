@@ -19,8 +19,17 @@ const Pagination = memo(() => {
   const totalPages = useMemo(() => Math.ceil(totalTopics / TOPICS_PER_PAGE), [totalTopics]);
 
   const pagesToShow = useMemo(() => {
-    const estimatedStartingPage = currentPage - (Math.floor(LIMIT_PAGES_TO_SHOW / 2));
-    const startingPageToShow = estimatedStartingPage <= 0 ? 1 : estimatedStartingPage;
+    const halfPagesToShow = Math.floor(LIMIT_PAGES_TO_SHOW / 2);
+
+    let startingPageToShow;
+
+    if (currentPage - halfPagesToShow <= 0) {
+      startingPageToShow = 1;
+    } else if (currentPage + halfPagesToShow > totalPages) {
+      startingPageToShow = currentPage - (currentPage + halfPagesToShow - totalPages) - halfPagesToShow;
+    } else {
+      startingPageToShow = currentPage - halfPagesToShow;
+    }
 
     return [...Array(totalPages >= LIMIT_PAGES_TO_SHOW ? LIMIT_PAGES_TO_SHOW : totalPages)]
       .map((_, index) => startingPageToShow + index);
