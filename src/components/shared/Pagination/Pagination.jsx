@@ -48,7 +48,9 @@ const Pagination = memo(() => {
 
   return (
     <ul className={classes.Pagination}>
-      <li className={classes.PaginationItem}>
+      <li className={classNames(classes.PaginationItem, {
+        [`${classes.Active}`]: 1 === currentPage,
+      })}>
         <button
           onClick={chooseFirstPage}
           disabled={currentPage === 1}
@@ -58,11 +60,13 @@ const Pagination = memo(() => {
       </li>
 
       {pagesToShow.map((page) => (
-        <li key={page} className={classes.PaginationItem}>
+        <li
+          key={page}
+          className={classNames(classes.PaginationItem, {
+            [`${classes.Active}`]: page === currentPage,
+          })}
+        >
           <button
-            className={classNames(classes.PageButton, {
-              [`${classes.ActivePage}`]: page === currentPage,
-            })}
             onClick={() => chooseActivePage(page)}
             disabled={page === currentPage}
           >
@@ -71,7 +75,9 @@ const Pagination = memo(() => {
         </li>
       ))}
 
-      <li className={classes.PaginationItem}>
+      <li className={classNames(classes.PaginationItem, {
+        [`${classes.Active}`]: totalPages === currentPage,
+      })}>
         <button
           onClick={chooseLastPage}
           disabled={currentPage === totalPages}
