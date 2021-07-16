@@ -8,7 +8,6 @@ import { setCurrentPage } from '../../../redux/slices/topicsSlice';
 import classes from './Pagination.module.scss';
 
 const Pagination = memo(() => {
-  console.log('RENDER PAGINATION');
   const currentPage = useSelector(state => state.topics.currentPage);
   const totalTopics = useSelector(state => state.topics.totalTopics);
 
