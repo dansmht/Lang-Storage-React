@@ -2,11 +2,10 @@ import React, { memo, useMemo } from 'react';
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { LIMIT_PAGES_TO_SHOW, TOPICS_PER_PAGE } from '../../../utils/constants';
 import { setCurrentPage } from '../../../redux/slices/topicsSlice';
 
 import classes from './Pagination.module.scss';
-
-const LIMIT_PAGES_TO_SHOW = 5;
 
 const Pagination = memo(() => {
   console.log('RENDER PAGINATION');
@@ -17,7 +16,7 @@ const Pagination = memo(() => {
 
   const dispatch = useDispatch();
 
-  const totalPages = useMemo(() => Math.ceil(totalTopics / 12), [totalTopics]);
+  const totalPages = useMemo(() => Math.ceil(totalTopics / TOPICS_PER_PAGE), [totalTopics]);
 
   const pagesToShow = useMemo(() => {
     const estimatedStartingPage = currentPage - (Math.floor(LIMIT_PAGES_TO_SHOW / 2));
