@@ -30,5 +30,6 @@ module.exports = {
     'jsx-quotes': ['error', 'prefer-single'],
     'react/react-in-jsx-scope': 'off',
     'react/jsx-tag-spacing': 'error',
+    'react/display-name': 'off',
   },
 };
