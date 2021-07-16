@@ -40,11 +40,11 @@ const Pagination = memo(() => {
   };
 
   const chooseFirstPage = () => {
-    chooseFirstPage(1);
+    chooseActivePage(1);
   };
 
   const chooseLastPage = () => {
-    chooseFirstPage(totalPages);
+    chooseActivePage(totalPages);
   };
 
   return (
