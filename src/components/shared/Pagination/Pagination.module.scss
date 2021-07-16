@@ -1,0 +1,16 @@
+.Pagination {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  margin-top: 40px;
+
+  .PaginationItem {
+    .PageButton {
+      color: green;
+
+      &.ActivePage {
+        color: red;
+      }
+    }
+  }
+}
