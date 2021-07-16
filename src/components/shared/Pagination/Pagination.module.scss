@@ -5,11 +5,44 @@
   margin-top: 40px;
 
   .PaginationItem {
-    .PageButton {
-      color: green;
+    margin: 0 7px;
 
-      &.ActivePage {
-        color: red;
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    button {
+      min-width: 40px;
+      height: 40px;
+      padding: 0 16px;
+      color: var(--darkest-gray-color);
+      background: transparent;
+      border: 2px solid var(--light-gray-color);
+      border-radius: 10px;
+      outline: none;
+      font-size: var(--small-font-size);
+      cursor: pointer;
+      transition: var(--transition);
+
+      &:hover,
+      &:focus {
+        background: var(--orange-color);
+        border-color: var(--orange-color);
+        color: var(--white-color);
+      }
+    }
+
+    &.Active button {
+      border-color: var(--orange-color);
+      cursor: default;
+
+      &:hover {
+        color: var(--darkest-gray-color);
+        background: transparent;
       }
     }
   }
