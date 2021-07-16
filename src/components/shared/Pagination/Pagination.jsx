@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -35,17 +35,17 @@ const Pagination = memo(() => {
       .map((_, index) => startingPageToShow + index);
   }, [currentPage]);
 
-  const chooseActivePage = (page) => {
+  const chooseActivePage = useCallback((page) => {
     dispatch(setCurrentPage(page));
-  };
+  }, []);
 
-  const chooseFirstPage = () => {
+  const chooseFirstPage = useCallback(() => {
     chooseActivePage(1);
-  };
+  }, []);
 
-  const chooseLastPage = () => {
+  const chooseLastPage = useCallback(() => {
     chooseActivePage(totalPages);
-  };
+  }, []);
 
   return (
     <ul className={classes.Pagination}>
