@@ -1,10 +1,10 @@
-.header {
+.Header {
   padding: 6px 0 40px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 
-  .loginBtn {
+  .LoginBtn {
     text-decoration: none;
     color: #181818;
 
@@ -14,10 +14,10 @@
     }
   }
 
-  .navigationList {
+  .NavigationList {
     display: flex;
 
-    .navigationItem {
+    .NavigationItem {
       margin-right: 50px;
 
       &:last-child {
@@ -30,7 +30,7 @@
       }
     }
 
-    .userDropdown {
+    .UserMenu {
       width: 26px;
       height: 26px;
       border-radius: 50%;

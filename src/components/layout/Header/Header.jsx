@@ -10,7 +10,7 @@ const Header = () => {
   const { user, isLoading } = useSelector(state => state.user);
 
   return (
-    <header className={classes.header}>
+    <header className={classes.Header}>
       <Logo />
       { isLoading
         ? (
@@ -20,22 +20,22 @@ const Header = () => {
           ? (
             <a
               href={`${import.meta.env.VITE_BASE_SERVER_URL}/api/auth/login`}
-              className={classes.loginBtn}
+              className={classes.LoginBtn}
             >Log in via Google</a>
           )
           : (
-            <ul className={classes.navigationList}>
-              <li className={classes.navigationItem}>
+            <ul className={classes.NavigationList}>
+              <li className={classes.NavigationItem}>
                 <NavLink to='/topics'>All topics</NavLink>
               </li>
-              <li className={classes.navigationItem}>
+              <li className={classes.NavigationItem}>
                 <NavLink to='/create-topic'>New topic</NavLink>
               </li>
-              <li className={classes.navigationItem}>
+              <li className={classes.NavigationItem}>
                 <NavLink to='/collection'>My collection</NavLink>
               </li>
-              <li className={classes.navigationItem}>
-                <div className={classes.userDropdown}>
+              <li className={classes.NavigationItem}>
+                <div className={classes.UserMenu}>
                   <img src={user.picture} alt='User' />
                 </div>
               </li>
