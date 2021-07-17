@@ -1,27 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 
 import classes from './Dropdown.module.scss';
 
 const Dropdown = ({ children, close }) => {
 
+  const dropdownRef = useRef();
+
   useEffect(() => {
     const handleClickListener = (event) => {
-      console.log('EVENT.path', event.path);
-      close();
+      const path = event.path || (event.composedPath && event.composedPath());
+
+      if (!path.includes(dropdownRef.current)) {
+        close();
+      }
     };
 
-    console.log('Dropdown addEventListener');
     document.addEventListener('click', handleClickListener);
 
     return () => {
-      console.log('Dropdown removeEventListener');
       document.removeEventListener('click', handleClickListener);
     };
   }, []);
 
   return (
-    <div className={classes.Dropdown}>
+    <div className={classes.Dropdown} ref={dropdownRef}>
       { children }
     </div>
   );
