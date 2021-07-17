@@ -35,7 +35,7 @@ const Header = () => {
                 <NavLink to='/collection'>My collection</NavLink>
               </li>
               <li className={classes.NavigationItem}>
-                <div className={classes.UserMenu}>
+                <div className={classes.UserMenu} tabIndex={0}>
                   <img src={user.picture} alt='User' />
                 </div>
               </li>

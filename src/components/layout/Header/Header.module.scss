@@ -36,6 +36,12 @@
       border-radius: 50%;
       overflow: hidden;
       cursor: pointer;
+      transition: var(--transition);
+
+      &:hover,
+      &:focus {
+        filter: brightness(0.85);
+      }
 
       img {
         width: 100%;
