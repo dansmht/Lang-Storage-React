@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import classes from './Dropdown.module.scss';
 
-const Dropdown = ({ children, close }) => {
+const Dropdown = ({ children, close, className }) => {
 
   const dropdownRef = useRef();
 
@@ -24,7 +25,10 @@ const Dropdown = ({ children, close }) => {
   }, []);
 
   return (
-    <div className={classes.Dropdown} ref={dropdownRef}>
+    <div
+      ref={dropdownRef}
+      className={classNames(classes.Dropdown, className)}
+    >
       { children }
     </div>
   );
@@ -33,6 +37,7 @@ const Dropdown = ({ children, close }) => {
 Dropdown.propTypes = {
   children: PropTypes.node.isRequired,
   close: PropTypes.func.isRequired,
+  className: PropTypes.string,
 };
 
 export default Dropdown;

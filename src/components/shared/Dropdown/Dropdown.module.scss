@@ -1,3 +1,9 @@
 .Dropdown {
-
+  position: absolute;
+  right: 0;
+  margin-top: 9px;
+  padding: 20px 30px;
+  border: 2px solid var(--light-gray-color);
+  border-radius: 20px 0 20px 20px;
+  overflow: hidden;
 }
