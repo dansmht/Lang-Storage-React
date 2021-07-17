@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import { ESC_KEY } from '../../../utils/constants';
+
 import classes from './Dropdown.module.scss';
 
 const Dropdown = ({ children, close, className }) => {
@@ -17,10 +19,20 @@ const Dropdown = ({ children, close, className }) => {
       }
     };
 
+    const handleKeyDownListener = (event) => {
+      if (event.keyCode === ESC_KEY) {
+        close();
+      }
+    };
+
     document.addEventListener('click', handleClickListener);
+
+    document.addEventListener('keydown', handleKeyDownListener);
 
     return () => {
       document.removeEventListener('click', handleClickListener);
+
+      document.removeEventListener('keydown', handleKeyDownListener);
     };
   }, []);
 

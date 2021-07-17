@@ -3,9 +3,9 @@ import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import classes from './Modal.module.scss';
+import { ESC_KEY } from '../../../utils/constants';
 
-const ESC_KEY = 27;
+import classes from './Modal.module.scss';
 
 const modalRootNode = document.getElementById('modal-root');
 
@@ -18,6 +18,23 @@ const Modal = ({ isOpen, confirm, close, cancelBtnText, confirmBtnText, closable
 
   useEffect(() => {
     if (isOpen) {
+      const trapFocus = (event) => {
+        if (event.target === topTabTrap.current) {
+          lastFocusableElement.focus();
+        }
+
+        if (event.target === bottomTabTrap.current) {
+          firstFocusableElement.focus();
+        }
+      };
+
+      const handleKeyDownListener = (event) => {
+        if (event.keyCode === ESC_KEY) {
+          close();
+        }
+      };
+
+      document.body.classList.add('overflow');
 
       const focusedElementBeforeModal = document.activeElement;
 
@@ -33,36 +50,21 @@ const Modal = ({ isOpen, confirm, close, cancelBtnText, confirmBtnText, closable
         lastFocusableElement.focus();
       }
 
-      document.body.classList.add('overflow');
-
       document.addEventListener('focusin', trapFocus);
 
+      document.addEventListener('keydown', handleKeyDownListener);
+
       return () => {
+        document.body.classList.remove('overflow');
+
         document.removeEventListener('focusin', trapFocus);
 
-        document.body.classList.remove('overflow');
+        document.removeEventListener('keydown', handleKeyDownListener);
 
         focusedElementBeforeModal.focus();
       };
-
-      // eslint-disable-next-line no-inner-declarations
-      function trapFocus(event) {
-        if (event.target === topTabTrap.current) {
-          lastFocusableElement.focus();
-        }
-
-        if (event.target === bottomTabTrap.current) {
-          firstFocusableElement.focus();
-        }
-      }
     }
   }, [isOpen]);
-
-  const handleKeyDown = (event) => {
-    if (event.keyCode === ESC_KEY) {
-      close();
-    }
-  };
 
   const stopPropagation = (event) => {
     event.stopPropagation();
@@ -80,7 +82,6 @@ const Modal = ({ isOpen, confirm, close, cancelBtnText, confirmBtnText, closable
       className={classNames(classes.Modal, 'modal')}
       ref={modalRef}
       onClick={stopPropagation}
-      onKeyDown={handleKeyDown}
     >
       <div ref={topTabTrap} tabIndex={0} />
       <div
