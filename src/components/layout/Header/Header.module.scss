@@ -6,7 +6,7 @@
 
   .LoginBtn {
     text-decoration: none;
-    color: #181818;
+    color: var(--black-color);
 
     &:hover {
       font-weight: bold;
@@ -18,15 +18,16 @@
     display: flex;
 
     .NavigationItem {
+      position: relative;
       margin-right: 50px;
 
       &:last-child {
         margin-right: 0;
       }
 
-      a {
+      & > a {
         text-decoration: none;
-        color: #181818;
+        color: var(--black-color);
       }
     }
 
