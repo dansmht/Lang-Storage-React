@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import Dropdown from '../../../shared/Dropdown/Dropdown';
 import UserDropdownItem from './UserDropdownItem/UserDropdownItem';
-import LanguageIcon from '../../../shared/Icons/LanguageIcon/LanguageIcon';
-import DonationsIcon from '../../../shared/Icons/DonationsIcon/DonationsIcon';
-import DarkModeIcon from '../../../shared/Icons/DarkModeIcon/DarkModeIcon';
-import LogOutIcon from '../../../shared/Icons/LogOutIcon/LogOutIcon';
+import LanguageIcon from './UserDropdownItem/Icons/LanguageIcon/LanguageIcon';
+import DonationsIcon from './UserDropdownItem/Icons/DonationsIcon/DonationsIcon';
+import DarkModeIcon from './UserDropdownItem/Icons/DarkModeIcon/DarkModeIcon';
+import LogOutIcon from './UserDropdownItem/Icons/LogOutIcon/LogOutIcon';
 
 import classes from './UserDropdown.module.scss';
 
