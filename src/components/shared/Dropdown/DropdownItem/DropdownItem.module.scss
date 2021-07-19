@@ -1,0 +1,23 @@
+.DropdownItem {
+  display: flex;
+  align-items: center;
+  margin: 4px 0;
+  border-radius: 10px;
+  outline: none;
+  overflow: hidden;
+  cursor: pointer;
+
+  & > :is(a, span) {
+    color: var(--darkest-gray-color);
+    font-size: var(--medium-font-size);
+    transition: var(--transition);
+  }
+
+  &:hover,
+  &:focus-within {
+    & > :is(a, span) {
+      color: var(--white-color);
+      background: var(--orange-color);
+    }
+  }
+}

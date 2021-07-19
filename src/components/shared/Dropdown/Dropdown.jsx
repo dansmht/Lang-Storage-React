@@ -37,12 +37,12 @@ const Dropdown = ({ children, close, className }) => {
   }, []);
 
   return (
-    <div
+    <ul
       ref={dropdownRef}
       className={classNames(classes.Dropdown, className)}
     >
       { children }
-    </div>
+    </ul>
   );
 };
 
