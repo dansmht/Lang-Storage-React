@@ -1,0 +1,32 @@
+.UserDropdownItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  text-decoration: none;
+  outline: none;
+
+  .LeftIcon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 8px 12px 8px 0;
+
+    svg {
+      width: 30px;
+      height: 30px;
+
+      g,
+      path {
+        transition: var(--transition);
+      }
+    }
+  }
+
+  .RightItem {
+    margin-left: auto;
+    padding-right: 8px;
+  }
+}
