@@ -8,6 +8,7 @@ import TopicCard from './TopicCard/TopicCard';
 import SortButton from '../../shared/SortButton/SortButton';
 import FilterButton from '../../shared/FilterButton/FilterButton';
 import TopicsLoader from './TopicsLoader/TopicsLoader';
+import Pagination from '../../shared/Pagination/Pagination';
 
 import classes from './TopicsSection.module.scss';
 
@@ -47,11 +48,14 @@ const TopicsSection = memo(() => {
       {
         topics?.length
           ? (
-            <ul className={classes.TopicList}>
-              {topics.map((topic) => (
-                <TopicCard key={topic.id} topicData={topic} />
-              ))}
-            </ul>
+            <>
+              <ul className={classes.TopicList}>
+                {topics.map((topic) => (
+                  <TopicCard key={topic.id} topicData={topic} />
+                ))}
+              </ul>
+              <Pagination />
+            </>
           )
           : isLoading
             ? (
