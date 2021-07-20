@@ -1,3 +1,37 @@
 .UserDropdown {
   width: 300px;
+
+  .Menu {
+    width: 100%;
+  }
+
+  .PrimaryMenuEnter {
+    position: absolute;
+    transform: translateX(-110%);
+  }
+  .PrimaryMenuEnterActive {
+    transform: translateX(0%);
+    transition: var(--transition);
+  }
+  .PrimaryMenuExit {
+    position: absolute;
+  }
+  .PrimaryMenuExitActive {
+    transform: translateX(-110%);
+    transition: var(--transition);
+  }
+
+  .LanguageMenuEnter {
+    transform: translateX(110%);
+  }
+  .LanguageMenuEnterActive {
+    transform: translateX(0%);
+    transition: var(--transition);
+  }
+  .LanguageMenuExit {
+  }
+  .LanguageMenuExitActive {
+    transform: translateX(110%);
+    transition: var(--transition);
+  }
 }
