@@ -2,11 +2,12 @@ import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import { ENTER_CODE, NUMPAD_ENTER_CODE, SPACE_CODE } from '../../../../../utils/constants';
 import DropdownItem from '../../../../shared/Dropdown/DropdownItem/DropdownItem';
 
 import classes from './UserDropdownItem.module.scss';
 
-const UserDropdownItem = ({ children, leftIcon: LeftIcon, rightIcon: RightIcon, link, to, ...props }) => {
+const UserDropdownItem = ({ children, leftIcon: LeftIcon, rightIcon: RightIcon, link, to, goToMenu, setActiveMenu, ...props }) => {
 
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -53,12 +54,29 @@ const UserDropdownItem = ({ children, leftIcon: LeftIcon, rightIcon: RightIcon, 
     );
   }
 
+  let additionalHandlers = {};
+  if (goToMenu && setActiveMenu) {
+    const switchActiveMenu = () => setActiveMenu(goToMenu);
+    const onKeyDown = (event) => {
+      if ([SPACE_CODE, ENTER_CODE, NUMPAD_ENTER_CODE].includes(event.code)) {
+        event.preventDefault();
+        switchActiveMenu();
+      }
+    };
+
+    additionalHandlers = {
+      onClick: switchActiveMenu,
+      onKeyDown,
+    };
+  }
+
   const nextProps = {
     tabIndex: 0,
     onMouseEnter,
     onMouseLeave,
     onFocus,
     onBlur,
+    ...additionalHandlers,
     ...props,
   };
 
@@ -77,6 +95,8 @@ UserDropdownItem.propTypes = {
   rightIcon: PropTypes.func,
   link: PropTypes.bool,
   to: PropTypes.string,
+  goToMenu: PropTypes.string,
+  setActiveMenu: PropTypes.func,
 };
 
 export default UserDropdownItem;
