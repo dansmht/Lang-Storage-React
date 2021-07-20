@@ -17,13 +17,13 @@ const UserDropdown = ({ closeUserDropdown }) => {
     <Dropdown className={classes.UserDropdown} close={closeUserDropdown}>
       <UserDropdownItem
         leftIcon={LanguageIcon}
-        rightItem={RightLinkIcon}
+        rightIcon={RightLinkIcon}
       >
         Language
       </UserDropdownItem>
       <UserDropdownItem
         leftIcon={DonationsIcon}
-        rightItem={RightLinkIcon}
+        rightIcon={RightLinkIcon}
         link
         to='donations'
       >
@@ -31,7 +31,7 @@ const UserDropdown = ({ closeUserDropdown }) => {
       </UserDropdownItem>
       <UserDropdownItem
         leftIcon={DarkModeIcon}
-        rightItem={RightLinkIcon}
+        rightIcon={RightLinkIcon}
       >
         Dark Mode
       </UserDropdownItem>
