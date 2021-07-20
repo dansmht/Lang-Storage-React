@@ -1,19 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { useSelector } from 'react-redux';
 
 import classes from './RightDarkModeIcon.module.scss';
 
 const RightDarkModeIcon = ({ isActive }) => {
+  const darkMode = useSelector((state) => state.settings.darkMode);
+
   return (
     <span className={classNames(classes.RightDarkModeIcon, {
       [`${classes.Active}`]: isActive,
+      [`${classes.DarkMode}`]: darkMode,
     })}>
 
       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
         <g>
-          <circle className={classes.a} cx='256' cy='256' r='241.37' />
           <g>
+            <circle className={classes.a} cx='256' cy='256' r='241.37' />
             <path className={classes.b} d='M318.53,232a72.53,72.53,0,1,1-125.45.73L168.9,176.6a126.76,126.76,0,1,0,172.37-1.68Z' />
             <rect className={classes.b} x='233.38' y='144.82' width='45.23' height='100.94' />
           </g>

@@ -1,20 +1,30 @@
 .RightDarkModeIcon {
 
-  &.Active {
-    .a {
-      fill: #794597;
-    }
-
-    .b {
-      fill: #ffefb5;
-    }
-  }
-
   .a {
-    fill: #ffefb5;
+    fill: none;
   }
 
   .b {
-    fill: #794597;
+    fill: none;
+  }
+
+  &.Active {
+    .a {
+      fill: #ffefb5;
+    }
+
+    .b {
+      fill: #794597;
+    }
+
+    &.DarkMode {
+      .a {
+        fill: #794597;
+      }
+
+      .b {
+        fill: #ffefb5;
+      }
+    }
   }
 }
