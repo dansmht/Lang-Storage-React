@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
+import { ENTER_KEY, SPACE_KEY } from '../../../utils/constants';
 import Logo from '../../shared/Logo/Logo';
 import UserDropdown from './UserDropdown/UserDropdown';
 
@@ -18,6 +19,13 @@ const Header = () => {
 
   const closeUserDropdown = useCallback(() => {
     setIsUserDropdownOpen(false);
+  }, []);
+
+  const onSpaceAndEnterToggleDropdown = useCallback((event) => {
+    if ([SPACE_KEY, ENTER_KEY].includes(event.keyCode)) {
+      event.preventDefault();
+      toggleUserDropdown();
+    }
   }, []);
 
   return (
@@ -46,7 +54,7 @@ const Header = () => {
                 <NavLink to='/collection'>My collection</NavLink>
               </li>
               <li className={classes.NavigationItem}>
-                <div className={classes.UserMenu} tabIndex={0} onClick={toggleUserDropdown}>
+                <div className={classes.UserMenu} tabIndex={0} onClick={toggleUserDropdown} onKeyDown={onSpaceAndEnterToggleDropdown}>
                   <img src={user.picture} alt='User' />
                 </div>
 
