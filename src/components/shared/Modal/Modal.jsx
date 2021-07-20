@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import { ESC_KEY } from '../../../utils/constants';
+import { ESC_CODE } from '../../../utils/constants';
 
 import classes from './Modal.module.scss';
 
@@ -29,7 +29,7 @@ const Modal = ({ isOpen, confirm, close, cancelBtnText, confirmBtnText, closable
       };
 
       const handleKeyDownListener = (event) => {
-        if (event.keyCode === ESC_KEY) {
+        if (event.code === ESC_CODE) {
           close();
         }
       };

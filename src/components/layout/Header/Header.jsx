@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import { ENTER_KEY, SPACE_KEY } from '../../../utils/constants';
+import { ENTER_CODE, NUMPAD_ENTER_CODE, SPACE_CODE } from '../../../utils/constants';
 import Logo from '../../shared/Logo/Logo';
 import UserDropdown from './UserDropdown/UserDropdown';
 
@@ -22,7 +22,7 @@ const Header = () => {
   }, []);
 
   const onSpaceAndEnterToggleDropdown = useCallback((event) => {
-    if ([SPACE_KEY, ENTER_KEY].includes(event.keyCode)) {
+    if ([SPACE_CODE, ENTER_CODE, NUMPAD_ENTER_CODE].includes(event.code)) {
       event.preventDefault();
       toggleUserDropdown();
     }
