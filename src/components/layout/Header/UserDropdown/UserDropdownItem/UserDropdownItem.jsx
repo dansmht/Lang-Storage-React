@@ -6,7 +6,7 @@ import DropdownItem from '../../../../shared/Dropdown/DropdownItem/DropdownItem'
 
 import classes from './UserDropdownItem.module.scss';
 
-const UserDropdownItem = ({ children, leftIcon: LeftIcon, rightItem, link, to, ...props }) => {
+const UserDropdownItem = ({ children, leftIcon: LeftIcon, rightItem: RightItem, link, to, ...props }) => {
 
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
@@ -29,7 +29,10 @@ const UserDropdownItem = ({ children, leftIcon: LeftIcon, rightItem, link, to, .
 
       <span>{ children }</span>
 
-      {rightItem && <span className={classes.RightItem}>{ rightItem }</span>}
+      {RightItem && (
+        <span className={classes.RightItem}>
+          <RightItem isActive={isActive} />
+        </span>)}
     </>
   );
 
@@ -71,7 +74,7 @@ const UserDropdownItem = ({ children, leftIcon: LeftIcon, rightItem, link, to, .
 UserDropdownItem.propTypes = {
   children: PropTypes.node.isRequired,
   leftIcon: PropTypes.func,
-  rightItem: PropTypes.node,
+  rightItem: PropTypes.func,
   link: PropTypes.bool,
   to: PropTypes.string,
 };

@@ -6,13 +6,13 @@
   text-decoration: none;
   outline: none;
 
-  .LeftIcon {
+  .LeftIcon,
+  .RightItem {
     width: 36px;
     height: 36px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 8px 12px 8px 0;
 
     svg {
       width: 30px;
@@ -23,6 +23,10 @@
         transition: var(--transition);
       }
     }
+  }
+
+  .LeftIcon {
+    margin: 8px 12px 8px 0;
   }
 
   .RightItem {
