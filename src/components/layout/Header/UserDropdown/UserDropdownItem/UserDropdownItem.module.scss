@@ -19,7 +19,9 @@
       height: 30px;
 
       g,
-      path {
+      path,
+      circle,
+      rect {
         transition: var(--transition);
       }
     }

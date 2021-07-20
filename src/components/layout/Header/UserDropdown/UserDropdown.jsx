@@ -8,6 +8,7 @@ import DonationsIcon from './UserDropdownItem/Icons/DonationsIcon/DonationsIcon'
 import DarkModeIcon from './UserDropdownItem/Icons/DarkModeIcon/DarkModeIcon';
 import LogOutIcon from './UserDropdownItem/Icons/LogOutIcon/LogOutIcon';
 import RightLinkIcon from './UserDropdownItem/Icons/RightLinkIcon/RightLinkIcon';
+import RightDarkModeIcon from './UserDropdownItem/Icons/RightDarkModeIcon/RightDarkModeIcon';
 
 import classes from './UserDropdown.module.scss';
 
@@ -31,7 +32,7 @@ const UserDropdown = ({ closeUserDropdown }) => {
       </UserDropdownItem>
       <UserDropdownItem
         leftIcon={DarkModeIcon}
-        rightIcon={RightLinkIcon}
+        rightIcon={RightDarkModeIcon}
       >
         Dark Mode
       </UserDropdownItem>
