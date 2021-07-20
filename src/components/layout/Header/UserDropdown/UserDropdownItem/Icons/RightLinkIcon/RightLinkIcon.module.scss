@@ -1,0 +1,15 @@
+.RightLinkIcon {
+
+  &.Active {
+    .a {
+      fill: #2196f3;
+    }
+  }
+
+  .a {
+    fill: var(--white-color);
+    stroke: #000000;
+    stroke-miterlimit: 10;
+    stroke-width: 13.62px;
+  }
+}
