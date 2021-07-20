@@ -1,0 +1,8 @@
+.RightNextDropdownIcon {
+  transform: scale(0.75);
+  transition: var(--transition);
+
+  &.Active {
+    transform: scale(0.75) translateX(50%);
+  }
+}

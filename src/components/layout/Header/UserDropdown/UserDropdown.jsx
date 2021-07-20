@@ -11,6 +11,7 @@ import DarkModeIcon from './UserDropdownItem/Icons/DarkModeIcon/DarkModeIcon';
 import LogOutIcon from './UserDropdownItem/Icons/LogOutIcon/LogOutIcon';
 import RightLinkIcon from './UserDropdownItem/Icons/RightLinkIcon/RightLinkIcon';
 import RightDarkModeIcon from './UserDropdownItem/Icons/RightDarkModeIcon/RightDarkModeIcon';
+import RightNextDropdownIcon from './UserDropdownItem/Icons/RightNextDropdownIcon/RightNextDropdownIcon';
 
 import classes from './UserDropdown.module.scss';
 
@@ -25,7 +26,7 @@ const UserDropdown = ({ closeUserDropdown }) => {
     <Dropdown className={classes.UserDropdown} close={closeUserDropdown}>
       <UserDropdownItem
         leftIcon={LanguageIcon}
-        rightIcon={RightLinkIcon}
+        rightIcon={RightNextDropdownIcon}
       >
         Language
       </UserDropdownItem>
