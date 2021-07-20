@@ -46,7 +46,7 @@ const UserDropdown = ({ closeUserDropdown }) => {
             goToMenu='language'
             setActiveMenu={setActiveMenu}
           >
-        Language
+            Language
           </UserDropdownItem>
           <UserDropdownItem
             leftIcon={DonationsIcon}
@@ -54,19 +54,19 @@ const UserDropdown = ({ closeUserDropdown }) => {
             link
             to='donations'
           >
-          Donations
+            Donations
           </UserDropdownItem>
           <UserDropdownItem
             leftIcon={DarkModeIcon}
             rightIcon={RightDarkModeIcon}
             onClick={onDarkModeClick}
           >
-        Dark Mode
+            Dark Mode
           </UserDropdownItem>
           <UserDropdownItem
             leftIcon={LogOutIcon}
           >
-        Log Out
+            Log Out
           </UserDropdownItem>
         </div>
       </CSSTransition>
@@ -89,13 +89,13 @@ const UserDropdown = ({ closeUserDropdown }) => {
             goToMenu='main'
             setActiveMenu={setActiveMenu}
           >
-        Language
+            Language
           </UserDropdownItem>
           <UserDropdownItem
             leftIcon={LanguageIcon}
             rightIcon={RightNextDropdownIcon}
           >
-          Test
+            Test
           </UserDropdownItem>
         </div>
       </CSSTransition>
