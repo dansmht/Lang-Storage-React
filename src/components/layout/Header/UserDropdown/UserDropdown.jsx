@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
+import { toggleDarkMode } from '../../../../redux/actions/settingsActions';
 import Dropdown from '../../../shared/Dropdown/Dropdown';
 import UserDropdownItem from './UserDropdownItem/UserDropdownItem';
 import LanguageIcon from './UserDropdownItem/Icons/LanguageIcon/LanguageIcon';
@@ -13,6 +15,11 @@ import RightDarkModeIcon from './UserDropdownItem/Icons/RightDarkModeIcon/RightD
 import classes from './UserDropdown.module.scss';
 
 const UserDropdown = ({ closeUserDropdown }) => {
+  const dispatch = useDispatch();
+
+  const onDarkModeClick = useCallback(() => {
+    dispatch(toggleDarkMode());
+  }, []);
 
   return (
     <Dropdown className={classes.UserDropdown} close={closeUserDropdown}>
@@ -33,6 +40,7 @@ const UserDropdown = ({ closeUserDropdown }) => {
       <UserDropdownItem
         leftIcon={DarkModeIcon}
         rightIcon={RightDarkModeIcon}
+        onClick={onDarkModeClick}
       >
         Dark Mode
       </UserDropdownItem>
