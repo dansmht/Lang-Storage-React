@@ -1,6 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
 
 import { toggleDarkMode } from '../../../../redux/actions/settingsActions';
 import Dropdown from '../../../shared/Dropdown/Dropdown';
@@ -18,38 +19,87 @@ import classes from './UserDropdown.module.scss';
 const UserDropdown = ({ closeUserDropdown }) => {
   const dispatch = useDispatch();
 
+  const [activeMenu, setActiveMenu] = useState('main');
+
   const onDarkModeClick = useCallback(() => {
     dispatch(toggleDarkMode());
   }, []);
 
   return (
     <Dropdown className={classes.UserDropdown} close={closeUserDropdown}>
-      <UserDropdownItem
-        leftIcon={LanguageIcon}
-        rightIcon={RightNextDropdownIcon}
+
+      <CSSTransition
+        in={activeMenu === 'main'}
+        unmountOnExit
+        timeout={300}
+        classNames={{
+          enter: classes.PrimaryMenuEnter,
+          enterActive: classes.PrimaryMenuEnterActive,
+          exit: classes.PrimaryMenuExit,
+          exitActive: classes.PrimaryMenuExitActive,
+        }}
       >
+        <div className={classes.Menu}>
+          <UserDropdownItem
+            leftIcon={LanguageIcon}
+            rightIcon={RightNextDropdownIcon}
+            goToMenu='language'
+            setActiveMenu={setActiveMenu}
+          >
         Language
-      </UserDropdownItem>
-      <UserDropdownItem
-        leftIcon={DonationsIcon}
-        rightIcon={RightLinkIcon}
-        link
-        to='donations'
-      >
+          </UserDropdownItem>
+          <UserDropdownItem
+            leftIcon={DonationsIcon}
+            rightIcon={RightLinkIcon}
+            link
+            to='donations'
+          >
           Donations
-      </UserDropdownItem>
-      <UserDropdownItem
-        leftIcon={DarkModeIcon}
-        rightIcon={RightDarkModeIcon}
-        onClick={onDarkModeClick}
-      >
+          </UserDropdownItem>
+          <UserDropdownItem
+            leftIcon={DarkModeIcon}
+            rightIcon={RightDarkModeIcon}
+            onClick={onDarkModeClick}
+          >
         Dark Mode
-      </UserDropdownItem>
-      <UserDropdownItem
-        leftIcon={LogOutIcon}
-      >
+          </UserDropdownItem>
+          <UserDropdownItem
+            leftIcon={LogOutIcon}
+          >
         Log Out
-      </UserDropdownItem>
+          </UserDropdownItem>
+        </div>
+      </CSSTransition>
+
+      <CSSTransition
+        in={activeMenu === 'language'}
+        unmountOnExit
+        timeout={300}
+        classNames={{
+          enter: classes.LanguageMenuEnter,
+          enterActive: classes.LanguageMenuEnterActive,
+          exit: classes.LanguageMenuExit,
+          exitActive: classes.LanguageMenuExitActive,
+        }}
+      >
+        <div className={classes.Menu}>
+          <UserDropdownItem
+            leftIcon={LanguageIcon}
+            rightIcon={RightNextDropdownIcon}
+            goToMenu='main'
+            setActiveMenu={setActiveMenu}
+          >
+        Language
+          </UserDropdownItem>
+          <UserDropdownItem
+            leftIcon={LanguageIcon}
+            rightIcon={RightNextDropdownIcon}
+          >
+          Test
+          </UserDropdownItem>
+        </div>
+      </CSSTransition>
+
     </Dropdown>
   );
 };
