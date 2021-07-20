@@ -4,5 +4,9 @@
 
   &.Active {
     transform: scale(0.7) translateX(50%);
+
+    .a {
+      fill: var(--white-color);
+    }
   }
 }
