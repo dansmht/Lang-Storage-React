@@ -7,6 +7,10 @@
   text-decoration: none;
   outline: none;
 
+  .Text {
+    transform: translateY(-2px);
+  }
+
   .LeftIcon,
   .RightItem {
     width: 36px;

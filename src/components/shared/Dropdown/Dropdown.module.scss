@@ -12,5 +12,9 @@
   &:hover,
   &:focus-within {
     border-color: var(--orange-color);
+
+    div[data-divider] {
+      background: var(--orange-color);
+    }
   }
 }

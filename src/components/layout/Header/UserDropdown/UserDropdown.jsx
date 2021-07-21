@@ -14,6 +14,7 @@ import LogOutIcon from './UserDropdownItem/Icons/LogOutIcon/LogOutIcon';
 import RightLinkIcon from './UserDropdownItem/Icons/RightLinkIcon/RightLinkIcon';
 import RightDarkModeIcon from './UserDropdownItem/Icons/RightDarkModeIcon/RightDarkModeIcon';
 import RightNextDropdownIcon from './UserDropdownItem/Icons/RightNextDropdownIcon/RightNextDropdownIcon';
+import BackArrowIcon from './UserDropdownItem/Icons/BackArrowIcon/BackArrowIcon';
 
 import classes from './UserDropdown.module.scss';
 
@@ -108,13 +109,15 @@ const UserDropdown = ({ closeUserDropdown }) => {
       >
         <div className={classes.Menu}>
           <UserDropdownItem
-            leftIcon={LanguageIcon}
-            rightIcon={RightNextDropdownIcon}
+            leftIcon={BackArrowIcon}
             goToMenu='main'
             setActiveMenu={setActiveMenu}
           >
-            Language
+            Back
           </UserDropdownItem>
+
+          <div className={classes.ItemsDivider} data-divider />
+
           <UserDropdownItem
             leftIcon={LanguageIcon}
             rightIcon={RightNextDropdownIcon}

@@ -1,6 +1,13 @@
 .UserDropdown {
   width: 300px;
 
+  .ItemsDivider {
+    margin: 8px auto;
+    height: 2px;
+    background: var(--light-gray-color);
+    transition: var(--transition);
+  }
+
   .Menu {
     width: 100%;
     padding: 4px 8px;

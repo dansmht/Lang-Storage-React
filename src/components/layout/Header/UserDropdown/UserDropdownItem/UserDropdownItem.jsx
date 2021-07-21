@@ -28,7 +28,7 @@ const UserDropdownItem = ({ children, leftIcon: LeftIcon, rightIcon: RightIcon, 
         </span>
       )}
 
-      <span>{ children }</span>
+      <span className={classes.Text}>{ children }</span>
 
       {RightIcon && (
         <span className={classes.RightItem}>
