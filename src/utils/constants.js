@@ -5,3 +5,5 @@ export const ESC_CODE = 'Escape';
 export const ENTER_CODE = 'Enter';
 export const NUMPAD_ENTER_CODE = 'NumpadEnter';
 export const SPACE_CODE = 'Space';
+
+export const USER_DROPDOWN_PADDING = 4;

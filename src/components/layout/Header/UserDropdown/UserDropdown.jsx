@@ -1,8 +1,9 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 
+import { USER_DROPDOWN_PADDING } from '../../../../utils/constants';
 import { toggleDarkMode } from '../../../../redux/actions/settingsActions';
 import Dropdown from '../../../shared/Dropdown/Dropdown';
 import UserDropdownItem from './UserDropdownItem/UserDropdownItem';
@@ -20,16 +21,35 @@ const UserDropdown = ({ closeUserDropdown }) => {
   const dispatch = useDispatch();
 
   const [activeMenu, setActiveMenu] = useState('main');
+  const [menuHeight, setMenuHeight] = useState(null);
+
+  const dropdownMenuRef = useRef();
+
+  useEffect(() => {
+    if (dropdownMenuRef.current) {
+      setMenuHeight(dropdownMenuRef.current.offsetHeight + USER_DROPDOWN_PADDING);
+    }
+  }, [dropdownMenuRef]);
+
+  const calcHeight = useCallback((element) => {
+    const height = element.offsetHeight;
+    setMenuHeight(height + USER_DROPDOWN_PADDING);
+  }, []);
 
   const onDarkModeClick = useCallback(() => {
     dispatch(toggleDarkMode());
   }, []);
 
   return (
-    <Dropdown className={classes.UserDropdown} close={closeUserDropdown}>
+    <Dropdown
+      style={{ height: menuHeight }}
+      className={classes.UserDropdown}
+      close={closeUserDropdown}
+    >
 
       <CSSTransition
         in={activeMenu === 'main'}
+        onEnter={calcHeight}
         unmountOnExit
         timeout={300}
         classNames={{
@@ -39,7 +59,10 @@ const UserDropdown = ({ closeUserDropdown }) => {
           exitActive: classes.PrimaryMenuExitActive,
         }}
       >
-        <div className={classes.Menu}>
+        <div
+          className={classes.Menu}
+          ref={dropdownMenuRef}
+        >
           <UserDropdownItem
             leftIcon={LanguageIcon}
             rightIcon={RightNextDropdownIcon}
@@ -73,6 +96,7 @@ const UserDropdown = ({ closeUserDropdown }) => {
 
       <CSSTransition
         in={activeMenu === 'language'}
+        onEnter={calcHeight}
         unmountOnExit
         timeout={300}
         classNames={{

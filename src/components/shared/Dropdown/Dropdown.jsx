@@ -6,7 +6,7 @@ import { ESC_CODE } from '../../../utils/constants';
 
 import classes from './Dropdown.module.scss';
 
-const Dropdown = ({ children, close, className }) => {
+const Dropdown = ({ children, close, className, ...props }) => {
 
   const dropdownRef = useRef();
 
@@ -40,6 +40,7 @@ const Dropdown = ({ children, close, className }) => {
     <ul
       ref={dropdownRef}
       className={classNames(classes.Dropdown, className)}
+      {...props}
     >
       { children }
     </ul>
